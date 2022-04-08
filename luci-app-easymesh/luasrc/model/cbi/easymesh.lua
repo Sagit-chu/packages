@@ -32,10 +32,10 @@ function detect_Node()
 end
 local Nodes = luci.sys.exec("batctl n 2>/dev/null| tail +3 | wc -l")
 local Node = detect_Node()
-v = m:section(Table, Node, "" ,"<b>" .. translate("Active node") .. "：" .. Nodes .. "</b>")
-v:option(DummyValue, "IF", translate("IF"))
-v:option(DummyValue, "Neighbor", translate("Neighbor"))
-v:option(DummyValue, "lastseen", translate("lastseen"))
+v = m:section(Table, Node, "" ,translate("<b>Active node：" .. Nodes .. "</b>"))
+v:option(DummyValue, "IF")
+v:option(DummyValue, "Neighbor")
+v:option(DummyValue, "lastseen")
 
 -- Basic
 s = m:section(TypedSection, "easymesh", translate("Settings"), translate("General Settings"))
@@ -93,11 +93,6 @@ o = s:option(Value, "low_rssi_val", translate("Threshold for an bad RSSI"))
 o.default = "-88"
 o.atatype = "range(-1,-120)"
 o:depends("kvr", 1)
-
----- 802.11F
---enable = s:option(Flag, "iapp", translate("inter-access point protocol"), translate("Wireless Access Points (APs) running on different vendors can communicate with each other"))
---enable.default = 0
---enable.rmempty = false
 
 ---- ap_mode
 enable = s:option(Flag, "ap_mode", translate("AP MODE Enable"), translate("Enable or disable AP MODE"))
