@@ -6,8 +6,8 @@ on:
     paths:
       - '.github/workflows/kenzo.yml'
       - 'diy/**'
-  # schedule:
-  #   - cron: 0 */12 * * *
+  schedule:
+    - cron: 0 */12 * * *
   watch:
     types: started
   repository_dispatch:
@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [main]
+        target: [small-package]
         
     steps:
     - name: Checkout
@@ -44,7 +44,7 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         chmod +x ${{matrix.target}}.sh
-        git clone -b ${{matrix.target}} https://github.com/kenzok8/small-package.git ${{matrix.target}}
+        git clone -b ${{matrix.target}} https://github.com/Sagit-chu/packages.git ${{matrix.target}}
         cd ${{matrix.target}}
         git rm -r --cache * >/dev/null 2>&1 &
         rm -rf `find ./* -maxdepth 0 -type d ! -name "diy"` >/dev/null 2>&1
@@ -53,7 +53,7 @@ jobs:
         
     - name: Upload
       env: 
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.CD }}
       run: |
         [ -e $GITHUB_WORKSPACE/LICENSE ] && cp $GITHUB_WORKSPACE/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
         [ -e $GITHUB_WORKSPACE/README.md ] && cp $GITHUB_WORKSPACE/README.md $GITHUB_WORKSPACE/${{matrix.target}}
