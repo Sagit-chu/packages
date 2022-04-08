@@ -73,7 +73,7 @@ config PACKAGE_$(PKG_NAME)_Transparent_Proxy
 	select PACKAGE_iptables-mod-socket
 	select PACKAGE_iptables-mod-tproxy
 	select PACKAGE_kmod-ipt-nat
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Brook
 	bool "Include Brook"
@@ -81,11 +81,11 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Brook
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ChinaDNS_NG
 	bool "Include ChinaDNS-NG"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy
 	bool "Include Haproxy"
-	default n if aarch64||arm||i386||x86_64
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Hysteria
 	bool "Include Hysteria"
@@ -103,24 +103,24 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_NaiveProxy
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_PDNSD
 	bool "Include PDNSD"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Client
 	bool "Include Shadowsocks Libev Client"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Server
 	bool "Include Shadowsocks Libev Server"
-	default n if aarch64||arm||i386||x86_64
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Rust_Client
 	bool "Include Shadowsocks Rust Client"
 	depends on aarch64||arm||i386||mips||mipsel||x86_64
-	default n if aarch64
+	default y if aarch64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Client
 	bool "Include ShadowsocksR Libev Client"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Server
 	bool "Include ShadowsocksR Libev Server"
@@ -128,7 +128,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_ShadowsocksR_Libev_Server
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Simple_Obfs
 	bool "Include Simple-Obfs (Shadowsocks Plugin)"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_GO
 	bool "Include Trojan-GO"
@@ -136,19 +136,19 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_GO
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Trojan_Plus
 	bool "Include Trojan-Plus"
-	default n
+	default y
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray
 	bool "Include V2ray"
-	default n if aarch64||arm||i386||x86_64
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin
 	bool "Include V2ray-Plugin (Shadowsocks Plugin)"
-	default n if aarch64||arm||i386||x86_64
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray
 	bool "Include Xray"
-	default n if aarch64||arm||i386||x86_64
+	default y if aarch64||arm||i386||x86_64
 
 config PACKAGE_$(PKG_NAME)_INCLUDE_Xray_Plugin
 	bool "Include Xray-Plugin (Shadowsocks Plugin)"
