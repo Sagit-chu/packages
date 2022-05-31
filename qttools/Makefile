@@ -8,7 +8,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qttools
 PKG_BASE:=5.15
-PKG_BUGFIX:=3
+PKG_BUGFIX:=4
 PKG_VERSION:=$(PKG_BASE).$(PKG_BUGFIX)
 PKG_RELEASE:=1
 
