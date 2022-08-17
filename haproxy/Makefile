@@ -10,7 +10,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=haproxy
-PKG_VERSION:=2.6.1
+PKG_VERSION:=2.6.2
 PKG_RELEASE:=$(AUTORELEASE)
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
@@ -122,6 +122,8 @@ define Package/haproxy/install
 	$(INSTALL_CONF) ./files/haproxy.cfg $(1)/etc/
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/haproxy.init $(1)/etc/init.d/haproxy
+	$(INSTALL_DIR) $(1)/etc/hotplug.d/acme
+	$(INSTALL_DATA) ./files/acme.hotplug $(1)/etc/hotplug.d/acme/00-haproxy
 endef
 
 Package/haproxy-nossl/install = $(Package/haproxy/install)
