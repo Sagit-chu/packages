@@ -10,8 +10,8 @@ include $(TOPDIR)/rules.mk
 PKG_ARCH_quickstart:=$(ARCH)
 
 PKG_NAME:=quickstart
-PKG_VERSION:=0.5.4
-PKG_RELEASE:=3
+PKG_VERSION:=0.5.6
+PKG_RELEASE:=1
 PKG_SOURCE:=$(PKG_NAME)-binary-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://fw.koolcenter.com/binary/quickstart/
 PKG_HASH:=skip
@@ -41,7 +41,10 @@ endef
 define Package/$(PKG_NAME)/postinst
 #!/bin/sh
 if [ -z "$${IPKG_INSTROOT}" ]; then
-	[ -f /etc/uci-defaults/quickstart ] && /etc/uci-defaults/quickstart && rm -f /etc/uci-defaults/quickstart
+	if [ -f /etc/uci-defaults/09-quickstart ]; then
+		chmod 755 /etc/uci-defaults/09-quickstart
+		/etc/uci-defaults/09-quickstart && rm -f /etc/uci-defaults/09-quickstart
+	fi
 fi
 endef
 
